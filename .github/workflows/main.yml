@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        model: [ "G970F,G973F,G975F", "N970F,N975F" ]
+        model: [ "N970F" ]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,13 +26,14 @@ jobs:
                      +magisk                   \
                      +nohardening              \
                      +ttl                      \
-                     +wireguard                \
+                     -wireguard                \
                      +cifs                     \
                      +sdfat                    \
                      +ntfs                     \
                      +force_dex_wqhd           \
                      +morosound                \
                      +boeffla_wl_blocker       \
+                     +dtb                      \
         2>&1 | tee config.info
     - name: Install gcc-aarch64-linux-gnu
       if: env.TOOLCHAIN == 'system-gcc' || env.TOOLCHAIN == 'system-clang'
